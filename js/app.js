@@ -2,14 +2,6 @@
 
 // global variable
 var favoriteItemImage = document.getElementById('favoriteImages');
-
-var leftImage = document.getElementById('leftImage');
-var centerImage = document.getElementById('centerImage');
-var rightImage = document.getElementById('rightImage');
-var leftIndex = null;
-var centerIndex = null;
-var rightIndex = null;
-
 var leftFavorite = document.getElementById('leftFavorite');
 var centerFavorite = document.getElementById('centerFavorite');
 var rightFavorite = document.getElementById('rightFavorite');
@@ -17,7 +9,6 @@ var rightFavorite = document.getElementById('rightFavorite');
 var leftFavoriteIndex = null;
 var centerFavoriteIndex = null;
 var rightFavoriteIndex = null;
-
 
 var favoriteVote = 0;
 
@@ -44,71 +35,30 @@ function randomFavoriteItem() {
   return randomFavoriteItem;
 }
 
-// creating 3rd number in the array and ensuring that it does not match the previous 2 indexes
-function displayImage() {
-  var randomImages = [];
-  randomImages[0] = randomFavoriteItem();
-  randomImages[1] = randomFavoriteItem();
+// function displayImage(){
+//   var randomImages = [];
+//   randomImages[0] = randomFavoriteItem();
+//   randomImages[1] = randomFavoriteItem();
 
-  while (randomImages[0] === randomImages[1]) {
-    console.log('double trouble');
-    randomImages[1] = randomFavoriteItem();
-  }
-  randomImages[2] = randomFavoriteItem();
-  while (randomImages[2] === randomImages[1] || randomImages[2] === randomImages[0]) {
-    console.log('double trouble');
-    randomImages[2] = randomFavoriteItem();
-  }
-  // using randomImages array numbers to assign the source a path and a name to the products in the FavoriteItem.allImages array
-  for (var i = 0; i < 3; i++) {
-    FavoriteItem.allImages[i].src = FavoriteItem.all[randomImages[i]].path;
-    FavoriteItem.allImages[i].id = FavoriteItem.all[randomImages[i]].name;
-    FavoriteItem.all[randomImages[i]].views += 1;
-  }
-}
-displayImage();
+//   while(randomImages[0] === randomImages[1]) {
+//     console.log('double trouble');
+//     randomImages[1] = randomFavoriteItem();
+//   }
+//   randomImages[2] = randomFavoriteItem();
+//   while(randomImages[2] === randomImages[1] || randomImages[2] === randomImages[0]){
+//     console.log('double trouble');
+//     randomImages[2] = randomFavoriteItem();
+//   }
+//   for(var i = 0; i < 3; i++) {
+
+//   }
+// }
 
 // create function to render to screen
 function renderFavoriteItem() {
   // create variables to distinguish from each picture and give random images while a certain condition is true
   console.log(allImages);
   do {
-    leftIndex = randomFavoriteItem();
-    centerIndex = randomFavoriteItem();
-    rightIndex = randomFavoriteItem();
-  } while (leftIndex === centerIndex || centerIndex === rightIndex || rightIndex === leftIndex);
-
-  // source of the image tags to the specific picture of the array
-  leftImage.src = FavoriteItem.allimages[leftIndex].image;
-  centerImage.src = FavoriteItem.allimages[centerIndex].image;
-  rightImage.src = FavoriteItem.allimages[rightIndex].image;
-}
-
-// function expression
-var clickedOnFavorite = function(event) {
-  var favoriteClicked = event.target.id;
-
-  if (favoriteClicked === 'leftImage' || favoriteClicked === 'centerImage' || favoriteClicked === 'rightImage'){
-    favoriteVote++;
-    // incrament favoritre clicked by one
-    if (favoriteClicked === 'leftImage') {
-      // do logic to increment number
-      FavoriteItem.allimages[leftIndex].clicked++;
-    } else if (favoriteClicked === 'centerImage') {
-      FavoriteItem.allimages[centerIndex].clicked++;
-    } else if (favoriteClicked === 'rightImage') {
-      FavoriteItem.allimages[rightIndex].clicked++;
-    }
-  } else {
-    alert('You didn\'t select on image');
-  }
-
-  console.log(FavoriteItem.allimages[leftIndex]);
-
-  console.log(FavoriteItem.allimages[centerIndex]);
-
-  console.log(FavoriteItem.allimages[rightIndex]);
-
     leftFavoriteIndex = randomFavoriteItem();
     centerFavoriteIndex = randomFavoriteItem();
     rightFavoriteIndex = randomFavoriteItem();
@@ -132,7 +82,6 @@ var clickedOnFavorite = function(event) {
   console.log(allImages[centerFavoriteIndex]);
 
   console.log(allImages[rightFavoriteIndex]);
->>>>>>> 3f54be765058bbbab6ed825336a346753f5d097b
 
   // check votes
   if (favoriteVote === 5) {
@@ -140,108 +89,100 @@ var clickedOnFavorite = function(event) {
     favoriteItemImage.removeEventListener('click', clickedOnFavorite);
 
 
-    // output to browser
-<<<<<<< HEAD
-    for (var i = 0; i < FavoriteItem.allimages.length; i++)
-    {
-      var Favorite = FavoriteItem.allimages[i];
-
+    //   // output to browser
     //   for (var i = 0; i < allImages.length; i++) {
     //     var FavoriteItem = allImages[i];
     //   }
     // } else {
     //   renderFavoriteItem();
-    // }
-
   }
 
-  function clickedOnFavorite(event) {
-    var favoriteClicked = event.target.id;
-    if (favoriteClicked === 'leftFavorite' || favoriteClicked === 'centerFavorite' || favoriteClicked === 'rightFavorite') {
-
-      // console.log(favoriteClicked);
-      favoriteVote++;
-      // console.log(favoriteVote);
-      // incrament favoritre clicked by one
-      if (favoriteClicked === 'leftFavorite') {
-        // do logic to increment number
-        allImages[leftFavoriteIndex].clicked++;
-        console.log(allImages[leftFavoriteIndex]);
-
-      } else if (favoriteClicked === 'centerFavorite') {
-        allImages[centerFavoriteIndex].clicked++;
-      } else if (favoriteClicked === 'rightFavorite') {
-        allImages[rightFavoriteIndex].clicked++;
-      }
-    } else {
-      alert('You didn\'t select on image');
->>>>>>> 3f54be765058bbbab6ed825336a346753f5d097b
-    }
-    renderFavoriteItem();
-  }
-  new FavoriteItem('bag', 'images/bag.jpg');
-  new FavoriteItem('banana', 'images/banana.jpg');
-  new FavoriteItem('bathroom', 'images/bathroom.jpg');
-  new FavoriteItem('boots', 'images/boots.jpg');
-  new FavoriteItem('breakfast', 'images/breakfast.jpg');
-  new FavoriteItem('bubblegum', 'images/bubblegum.jpg');
-  new FavoriteItem('chair', 'images/chair.jpg');
-  new FavoriteItem('cthulhu', 'images/cthulhu.jpg');
-  new FavoriteItem('dog-duck', 'images/dog-duck.jpg');
-  new FavoriteItem('dragon', 'images/dragon.jpg');
-  new FavoriteItem('pen', 'images/pen.jpg');
-  new FavoriteItem('pet-sweep', 'images/pet-sweep.jpg');
-  new FavoriteItem('scissrs', 'images/scissors.jpg');
-  new FavoriteItem('shark', 'images/shark.jpg');
-  new FavoriteItem('sweep', 'images/sweep.png');
-  new FavoriteItem('tauntaun', 'images/tauntaun.jpg');
-  new FavoriteItem('unicorn', 'images/unicorn.jpg');
-  new FavoriteItem('usb', 'images/usb.gif');
-  new FavoriteItem('water-can', 'images/water-can.jpg');
-  new FavoriteItem('wine-glass', 'images/wine-glass.jpg');
-
-
-  console.log(allImages);
-  renderFavoriteItem();
-
-  favoriteItemImage.addEventListener('click', clickedOnFavorite);
-  console.log(allImages);
-
-  // var ctx = document.getElementById('myChart').getContext('2d');
-  // var myChart = new Chart(ctx, {
-  //   type: 'bar',
-  //   data: {
-  //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //     datasets: [{
-  //       label: '# of Votes',
-  //       data: [12, 19, 3, 5, 2, 3],
-  //       backgroundColor: [
-  //         'rgba(255, 99, 132, 0.2)',
-  //         'rgba(54, 162, 235, 0.2)',
-  //         'rgba(255, 206, 86, 0.2)',
-  //         'rgba(75, 192, 192, 0.2)',
-  //         'rgba(153, 102, 255, 0.2)',
-  //         'rgba(255, 159, 64, 0.2)'
-  //       ],
-  //       borderColor: [
-  //         'rgba(255, 99, 132, 1)',
-  //         'rgba(54, 162, 235, 1)',
-  //         'rgba(255, 206, 86, 1)',
-  //         'rgba(75, 192, 192, 1)',
-  //         'rgba(153, 102, 255, 1)',
-  //         'rgba(255, 159, 64, 1)'
-  //       ],
-  //       borderWidth: 1
-  //     }]
-  //   },
-  //   options: {
-  //     scales: {
-  //       yAxes: [{
-  //         ticks: {
-  //           beginAtZero: true
-  //         }
-  //       }]
-  //     }
-  //   }
-  // }
 }
+
+function clickedOnFavorite(event) {
+  var favoriteClicked = event.target.id;
+  if (favoriteClicked === 'leftFavorite' || favoriteClicked === 'centerFavorite' || favoriteClicked === 'rightFavorite') {
+
+    // console.log(favoriteClicked);
+    favoriteVote++;
+    // console.log(favoriteVote);
+    // incrament favoritre clicked by one
+    if (favoriteClicked === 'leftFavorite') {
+      // do logic to increment number
+      allImages[leftFavoriteIndex].clicked++;
+      console.log(allImages[leftFavoriteIndex]);
+
+    } else if (favoriteClicked === 'centerFavorite') {
+      allImages[centerFavoriteIndex].clicked++;
+    } else if (favoriteClicked === 'rightFavorite') {
+      allImages[rightFavoriteIndex].clicked++;
+    }
+  } else {
+    alert('You didn\'t select on image');
+  }
+  renderFavoriteItem();
+}
+new FavoriteItem('bag', 'images/bag.jpg');
+new FavoriteItem('banana', 'images/banana.jpg');
+new FavoriteItem('bathroom', 'images/bathroom.jpg');
+new FavoriteItem('boots', 'images/boots.jpg');
+new FavoriteItem('breakfast', 'images/breakfast.jpg');
+new FavoriteItem('bubblegum', 'images/bubblegum.jpg');
+new FavoriteItem('chair', 'images/chair.jpg');
+new FavoriteItem('cthulhu', 'images/cthulhu.jpg');
+new FavoriteItem('dog-duck', 'images/dog-duck.jpg');
+new FavoriteItem('dragon', 'images/dragon.jpg');
+new FavoriteItem('pen', 'images/pen.jpg');
+new FavoriteItem('pet-sweep', 'images/pet-sweep.jpg');
+new FavoriteItem('scissrs', 'images/scissors.jpg');
+new FavoriteItem('shark', 'images/shark.jpg');
+new FavoriteItem('sweep', 'images/sweep.png');
+new FavoriteItem('tauntaun', 'images/tauntaun.jpg');
+new FavoriteItem('unicorn', 'images/unicorn.jpg');
+new FavoriteItem('usb', 'images/usb.gif');
+new FavoriteItem('water-can', 'images/water-can.jpg');
+new FavoriteItem('wine-glass', 'images/wine-glass.jpg');
+
+console.log(allImages);
+renderFavoriteItem();
+
+favoriteItemImage.addEventListener('click', clickedOnFavorite);
+// console.log(allImages);
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1,
+    }],
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        },
+      }],
+    },
+  },
+});

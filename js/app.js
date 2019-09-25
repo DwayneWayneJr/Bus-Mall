@@ -24,6 +24,7 @@ function FavoriteItem(name, image) {
   // logic of pushing images
   allImages.push(this);
 
+  updateStorage();
 }
 
 // create random function
@@ -34,6 +35,32 @@ function randomFavoriteItem() {
   console.log(allImages.length);
   return randomFavoriteItem;
 }
+
+FavoriteItem.prototype.clicked = function () {
+  console.log('prototype');
+};
+
+function updateStorage() {
+  // saves clicks into local storage
+
+  // convert array of objects into a JSON string
+  var jsonString = JSON.stringify(allImages);
+  localStorage.setItem('allImages', jsonString);
+}
+
+// create function that gets the data from local storage
+// sets global array to the data from local storage
+function getClickData() {
+  var data = localStorage.getItem('allImages');
+  var parsedData = JSON.parse(data);
+
+  for (var i = 0; i < parsedData.allImages; i++) {
+    new FavoriteItem(parsedData[i].name, parsedData[i].image, parsedData[i].clicked, parsedData[i].views);
+  }
+
+  renderFavoriteItem();
+}
+
 
 // function displayImage(){
 //   var randomImages = [];
@@ -146,6 +173,7 @@ new FavoriteItem('wine-glass', 'images/wine-glass.jpg');
 console.log(allImages);
 renderFavoriteItem();
 
+getClickData();
 favoriteItemImage.addEventListener('click', clickedOnFavorite);
 // console.log(allImages);
 
@@ -186,3 +214,7 @@ var myChart = new Chart(ctx, {
     },
   },
 });
+
+
+
+

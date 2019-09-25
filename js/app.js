@@ -27,6 +27,10 @@ function FavoriteItem(name, image) {
   updateStorage();
 }
 
+// FavoriteItem.prototype.favorite = function () {
+//   console.log('hey over here!,');
+// };
+
 // create random function
 // to select from array of images
 // return random number between 0-1
@@ -35,11 +39,6 @@ function randomFavoriteItem() {
   console.log(allImages.length);
   return randomFavoriteItem;
 }
-
-FavoriteItem.prototype.clicked = function () {
-  console.log('prototype');
-};
-
 function updateStorage() {
   // saves clicks into local storage
 
@@ -53,6 +52,7 @@ function updateStorage() {
 function getClickData() {
   var data = localStorage.getItem('allImages');
   var parsedData = JSON.parse(data);
+  console.log('parsedData', parsedData);
 
   for (var i = 0; i < parsedData.allImages; i++) {
     new FavoriteItem(parsedData[i].name, parsedData[i].image, parsedData[i].clicked, parsedData[i].views);
@@ -173,6 +173,7 @@ new FavoriteItem('wine-glass', 'images/wine-glass.jpg');
 console.log(allImages);
 renderFavoriteItem();
 
+updateStorage();
 getClickData();
 favoriteItemImage.addEventListener('click', clickedOnFavorite);
 // console.log(allImages);

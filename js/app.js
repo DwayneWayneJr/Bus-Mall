@@ -2,14 +2,6 @@
 
 // global variable
 var favoriteItemImage = document.getElementById('favoriteImages');
-
-var leftImage = document.getElementById('leftImage');
-var centerImage = document.getElementById('centerImage');
-var rightImage = document.getElementById('rightImage');
-var leftIndex = null;
-var centerIndex = null;
-var rightIndex = null;
-
 var leftFavorite = document.getElementById('leftFavorite');
 var centerFavorite = document.getElementById('centerFavorite');
 var rightFavorite = document.getElementById('rightFavorite');
@@ -17,7 +9,6 @@ var rightFavorite = document.getElementById('rightFavorite');
 var leftFavoriteIndex = null;
 var centerFavoriteIndex = null;
 var rightFavoriteIndex = null;
-
 
 var favoriteVote = 0;
 
@@ -73,42 +64,6 @@ function renderFavoriteItem() {
   // create variables to distinguish from each picture and give random images while a certain condition is true
   console.log(allImages);
   do {
-    leftIndex = randomFavoriteItem();
-    centerIndex = randomFavoriteItem();
-    rightIndex = randomFavoriteItem();
-  } while (leftIndex === centerIndex || centerIndex === rightIndex || rightIndex === leftIndex);
-
-  // source of the image tags to the specific picture of the array
-  leftImage.src = FavoriteItem.allimages[leftIndex].image;
-  centerImage.src = FavoriteItem.allimages[centerIndex].image;
-  rightImage.src = FavoriteItem.allimages[rightIndex].image;
-}
-
-// function expression
-var clickedOnFavorite = function(event) {
-  var favoriteClicked = event.target.id;
-
-  if (favoriteClicked === 'leftImage' || favoriteClicked === 'centerImage' || favoriteClicked === 'rightImage'){
-    favoriteVote++;
-    // incrament favoritre clicked by one
-    if (favoriteClicked === 'leftImage') {
-      // do logic to increment number
-      FavoriteItem.allimages[leftIndex].clicked++;
-    } else if (favoriteClicked === 'centerImage') {
-      FavoriteItem.allimages[centerIndex].clicked++;
-    } else if (favoriteClicked === 'rightImage') {
-      FavoriteItem.allimages[rightIndex].clicked++;
-    }
-  } else {
-    alert('You didn\'t select on image');
-  }
-
-  console.log(FavoriteItem.allimages[leftIndex]);
-
-  console.log(FavoriteItem.allimages[centerIndex]);
-
-  console.log(FavoriteItem.allimages[rightIndex]);
-
     leftFavoriteIndex = randomFavoriteItem();
     centerFavoriteIndex = randomFavoriteItem();
     rightFavoriteIndex = randomFavoriteItem();
@@ -132,7 +87,6 @@ var clickedOnFavorite = function(event) {
   console.log(allImages[centerFavoriteIndex]);
 
   console.log(allImages[rightFavoriteIndex]);
->>>>>>> 3f54be765058bbbab6ed825336a346753f5d097b
 
   // check votes
   if (favoriteVote === 5) {
@@ -141,11 +95,6 @@ var clickedOnFavorite = function(event) {
 
 
     // output to browser
-<<<<<<< HEAD
-    for (var i = 0; i < FavoriteItem.allimages.length; i++)
-    {
-      var Favorite = FavoriteItem.allimages[i];
-
     //   for (var i = 0; i < allImages.length; i++) {
     //     var FavoriteItem = allImages[i];
     //   }
@@ -175,7 +124,6 @@ var clickedOnFavorite = function(event) {
       }
     } else {
       alert('You didn\'t select on image');
->>>>>>> 3f54be765058bbbab6ed825336a346753f5d097b
     }
     renderFavoriteItem();
   }

@@ -113,7 +113,7 @@ var displayImage = function () {
       rightFavoriteIndex = temp;
     }
   }
-  if (favoriteVote === 10) {
+  if (favoriteVote === 25) {
     console.log('You competed the voting.');
     favoriteItemImage.removeEventListener('click', clickedOnFavorite);
 

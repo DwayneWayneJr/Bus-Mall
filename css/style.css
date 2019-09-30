@@ -1,7 +1,29 @@
+/* * {
+  outline: 1px dotted red;
+} */
+
+* body {
+  background: indigo;
+}
+
+h1 {
+  font-family: 'Abril Fatface',
+    cursive;
+  font-size: 48px;
+  text-align: center;
+  color: gray;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 #favoriteImages {
   width: 100%;
 }
 
+
 img {
-  width: 30%;
+  width: calc(30% - 30px);
+  height: 375px;
+  float: left;
+  padding-left: 50px;
 }
